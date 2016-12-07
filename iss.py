@@ -1,20 +1,15 @@
+
 # ISS API
-"""
+# 
 import requests
 
-req = requests.get("http://api.open-notify.org/iss-now.json?")
+r = requests.get("http://api.open-notify.org/iss-now.json?")
 
-#print(req.status_code)
-print(req.content, req.status_code)
-"""
+q = input("ISS API, what is you question about?: ")
+if q == "connection":
+    print("ISS API conection status is:", r.status_code)
 
-import urllib2
-import json
+else:
+	print("Connection status is: ", r.status_code, "\n" "All ISS API data: \n", r.text)
 
-req = urllib2.Request("http://api.open-notify.org/iss-now.json")
-response = urllib2.urlopen(req)
-
-obj = json.loads(response.read())
-
-print obj['timestamp']
-print obj['iss_position']['latitude'], obj['data']['iss_position']['latitude']
+#print(r.status_code, "\n", r.text)
